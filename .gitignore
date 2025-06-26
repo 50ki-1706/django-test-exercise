@@ -1,6 +1,11 @@
 venv/
-_pycache_
-/
-*.рус
+__pycache__/
+*/__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
 *.log
 db.sqlite3
+.DS_Store
+*.egg-info/
