@@ -16,6 +16,9 @@ def index(request: django.http.HttpRequest) -> django.http.HttpResponse:
         )
         task.save()
 
-    tasks = Task.objects.all()
+    if request.GET.get("order") == "due":
+        tasks = Task.objects.order_by("due_at")
+    else:
+        tasks = Task.objects.order_by("-created_at")
     context = {"tasks": tasks}
     return render(request, "todo/index.html", context)
