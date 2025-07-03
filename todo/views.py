@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils.timezone import make_aware
 from django.utils.dateparse import parse_datetime
+from django.utils import timezone
 from todo.models import Task
 import django.http
 
