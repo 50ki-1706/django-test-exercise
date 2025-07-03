@@ -29,6 +29,6 @@ def detail(request: django.http.HttpRequest, task_id: int) -> django.http.HttpRe
     try:
         task: Task = Task.objects.get(pk=task_id)
     except Task.DoesNotExist:
-        raise Http404("Task dose not exist")
+        raise Http404("Task does not exist")
     context: dict[str, Task] = {"task": task}
     return render(request, "todo/detail.html", context)
