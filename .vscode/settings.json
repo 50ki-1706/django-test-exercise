@@ -1,0 +1,4 @@
+{
+    "python.analysis.autoIndent": false,
+    "python.pyrefly.disableTypeErrors": true
+}
