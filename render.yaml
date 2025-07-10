@@ -6,7 +6,7 @@ databases:
 
 services:
   - type: web
-    name: django-test-web
+    name: 3201-19-27-35
     runtime: python
     plan: free
     branch: main
