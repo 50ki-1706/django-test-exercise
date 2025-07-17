@@ -5,8 +5,8 @@
   {% for task in completed_tasks %}
   <li>
     <strong>{{ task.title }}</strong>
-    - 完了日: {{ task.posted_at|date:"Y/m/d H:i" }} {% if task.due_at %} (期限: {{ task.due_at|date:"Y/m/d H:i" }}) {%
-    endif %}
+    - 完了日: {{ task.posted_at|date:"Y/m/d H:i" }} {% if task.due_at %} (期限: {{ task.due_at|date:"Y/m/d H:i" }})
+    {%endif%}
   </li>
   {% endfor %}
 </ul>
