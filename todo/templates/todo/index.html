@@ -5,6 +5,7 @@
     <title>To Do Application</title>
     <meta charset="UTF-8" />
     <meta name="author" content="INIAD" />
+    <link rel="stylesheet" href="{% static 'todo/style.css' %}" />
   </head>
 
   <body>
@@ -14,16 +15,22 @@
       {% csrf_token %}
       <div>
         <label for="titleInput">Title</label><br />
-        <input id="titleInput" name="title" type="text" placeholder="Input title" />
+        <input
+          id="titleInput"
+          type="text"
+          placeholder="タイトル"
+          class="textbox-1"
+        />
       </div>
       <div>
         <label for="dueInput">Due at:</label><br />
         <input id="dueInput" name="due_at" type="datetime-local" />
       </div>
       <div>
-        <button type="submit">Submit</button>
+        <button type="submit" class="button-1">Submit</button>
       </div>
     </form>
+    <br />
     <br />
 
     <div>
