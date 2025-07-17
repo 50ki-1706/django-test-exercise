@@ -34,9 +34,9 @@ def detail(request: django.http.HttpRequest, task_id: int) -> django.http.HttpRe
     return render(request, "todo/detail.html", context)
 
 
-def update(request, task_id):
+def update(request: django.http.HttpRequest, task_id: int) -> django.http.HttpResponse:
     try:
-        task = Task.object.get(pk=task_id)
+        task: Task = Task.objects.get(pk=task_id)
     except Task.DoesNotExist:
         raise Http404("Task does not exist")
     if request.method == "POST":
@@ -44,22 +44,22 @@ def update(request, task_id):
         task.due_at = make_aware(parse_datetime(request.POST["due_at"]))
         task.save()
         return redirect(detail, task_id)
-    context = {"task": task}
+    context: dict[str, Task] = {"task": task}
     return render(request, "todo/edit.html", context)
 
- 
-def delete(request, task_id):
+
+def delete(request: django.http.HttpRequest, task_id: int) -> django.http.HttpResponse:
     try:
-        task = Task.objects.get(pk=task_id)
+        task: Task = Task.objects.get(pk=task_id)
     except Task.DoesNotExist:
         raise Http404("Task does not exist")
     task.delete()
     return redirect(index)
 
 
-def close(request, task_id):
+def close(request, task_id) -> django.http.HttpResponse:
     try:
-        task = Task.objects.get(pk=task_id)
+        task: Task = Task.objects.get(pk=task_id)
     except Task.DoesNotExist:
         raise Http404("Task does not exist")
     task.completed = True

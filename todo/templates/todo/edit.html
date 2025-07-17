@@ -9,7 +9,7 @@
   <body>
     <h1>Edit task</h1>
     <p>You can edit tasks from the following form.</p>
-    <form action="(% url 'update' task.id%)" method="post">
+    <form action="{% url 'update' task.id %}" method="post">
       {% csrf_token %}
       <div>
         <label for="titleInput">Title</label><br />
@@ -23,8 +23,8 @@
       </div>
       <div>
         <label for="due Input">Due at: </label><br />
-        <input id="dueInput" name="due_at" type="datetime-local" value="{{
-        task.due_at|date: "Y-m-d H:1" }}">
+        <input id="dueInput" name="due_at" type="datetime-local" value="{{ task.due_at|date: "Y-m-d
+        H:1" }}">
       </div>
       <div>
         <button type="submit">Submit</button>
