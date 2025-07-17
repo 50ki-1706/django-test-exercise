@@ -64,7 +64,7 @@ def close(request, task_id) -> django.http.HttpResponse:
         raise Http404("Task does not exist")
     task.completed = True
     task.save()
-    return redirect(completed_tasks)
+    return redirect(index)
 
 
 def completed_tasks(request: django.http.HttpRequest) -> django.http.HttpResponse:
