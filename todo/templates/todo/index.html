@@ -32,18 +32,6 @@
     {% if task.due_at %}
     <li>Due at: {{ task.due_at }}</li>
     {% endif %}
-    <li>
-      <form action="{% url 'close' task.id %}" method="post" style="display: inline">
-        {% csrf_token %}
-        <button type="submit">完了にする</button>
-      </form>
-      <a href="{% url 'detail' task.id %}"><button>詳細</button></a>
-      <a href="{% url 'update' task.id %}"><button>編集</button></a>
-      <form action="{% url 'delete' task.id %}" method="post" style="display: inline">
-        {% csrf_token %}
-        <button type="submit" onclick="return confirm('本当に削除しますか？');">削除</button>
-      </form>
-    </li>
   </ul>
 </div>
 {% endfor %} {% endblock %}
