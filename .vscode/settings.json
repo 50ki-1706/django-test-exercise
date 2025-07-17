@@ -1,4 +1,21 @@
 {
     "python.analysis.autoIndent": false,
-    "python.pyrefly.disableTypeErrors": true
+    "python.pyrefly.disableTypeErrors": true,
+    "editor.formatOnSave": true,
+    "prettier.requireConfig": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": false
+    },
+    "[django-html]": {
+        "editor.defaultFormatter": null,
+        "editor.formatOnSave": false
+    },
+    "files.associations": {
+        "**/*.html": "html",
+        "**/templates/**/*.html": "django-html"
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    }
 }

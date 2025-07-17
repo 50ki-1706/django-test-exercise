@@ -1,0 +1,29 @@
+# Prettier ignore file for Django project
+
+# Django template files that need special handling
+# Uncomment the line below if you want to completely ignore Django templates
+# **/templates/**/*.html
+
+# Python cache files
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Django files
+*.sqlite3
+db.sqlite3
+media/
+static/
+
+# Virtual environment
+venv/
+env/
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
