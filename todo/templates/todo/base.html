@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>{% block title %}To Do Application{% endblock %}</title>
+    <meta charset="UTF-8" />
+    <meta name="author" content="INIAD" />
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1><a href="{% url 'index' %}">To Do Application</a></h1>
+        <div class="navi" style="display: none">
+        <ul>
+          <li><a href="{% url 'index' %}">タスク一覧</a></li>
+        </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>{% block content %} {% endblock %}</main>
+
+    <footer>
+      <p>&copy; 2025 INIAD To Do Application. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
