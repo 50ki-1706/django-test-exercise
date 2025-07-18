@@ -1,8 +1,8 @@
+/* --- 見出しのスタイル --- */
 h1 {
   border-bottom: solid 3px #cce4ff;
   position: relative;
 }
-
 h1:after {
   position: absolute;
   content: " ";
@@ -11,32 +11,133 @@ h1:after {
   bottom: -3px;
   width: 20%;
 }
+h1 a {
+  color: #000000;
+  text-decoration: none;
+}
 
+/* --- フォーム全体のグループ化 --- */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+/* --- Title入力欄のスタイル --- */
 .textbox-1 {
   width: 50%;
   padding: 8px 10px;
   border: 1px solid #969da3;
-  border-radius: 3px;
+  border-radius: 5px;
   color: #333;
   font-size: 1em;
   line-height: 1.5;
 }
-
 .textbox-1::placeholder {
   color: #999;
 }
 
+/* --- Due at入力欄のスタイル --- */
+.datetime-container {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 40px;
+  border: 1px solid #969da3;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.datetime-container input[type="datetime-local"] {
+  position: relative;
+  padding: 0 10px;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #333;
+}
+/* --- カレンダーアイコンのスタイル --- */
+.datetime-container::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  background-color: #2589d0;
+  /* アイコン画像を直接埋め込みます */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%; /* アイコンの大きさを調整 */
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  pointer-events: none;
+}
+.datetime-container input[type="datetime-local"]::-webkit-inner-spin-button,
+.datetime-container input[type="datetime-local"]::-webkit-clear-button {
+  -webkit-appearance: none;
+}
+.datetime-container input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+}
+
+/* --- 保存ボタンのスタイル --- */
 .button-1 {
-  display: flex;
-  justify-content: center;
-  align-items: left;
-  float: left;
-  width: 150px;
-  margin-top: 5px;
+  display: inline-block;
   padding: 0.5em 2em;
   border: 1px solid #2589d0;
   border-radius: 5px;
   background-color: #fff;
   color: #2589d0;
   font-size: 1em;
+  cursor: pointer;
+}
+
+/* --- ソートリンクのスタイル --- */
+.sort-links {
+  margin: 2rem 0;
+}
+.sort-link {
+  color: #007bff;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+.sort-link:hover {
+  text-decoration: underline;
+}
+.sort-link.active {
+  color: #343a40;
+  font-weight: bold;
+}
+
+/* --- タスク表示エリアのスタイル --- */
+.task-item {
+  background: white;
+  padding: 1rem 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+.task-item h2 a {
+  color: #333;
+}
+.task-item ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.task-item li {
+  color: #555;
 }
