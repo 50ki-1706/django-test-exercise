@@ -18,9 +18,9 @@ def index(request: django.http.HttpRequest) -> django.http.HttpResponse:
         task.save()
 
     if request.GET.get("order") == "due":
-        tasks: list[Task] = Task.objects.order_by("due_at")
+        tasks: list[Task] = Task.objects.filter(completed=False).order_by("due_at")
     else:
-        tasks: list[Task] = Task.objects.order_by("-posted_at")
+        tasks: list[Task] = Task.objects.filter(completed=False).order_by("-posted_at")
     context: dict[str, list[Task]] = {"tasks": tasks}
     return render(request, "todo/index.html", context)
 
@@ -65,3 +65,9 @@ def close(request, task_id) -> django.http.HttpResponse:
     task.completed = True
     task.save()
     return redirect(index)
+
+
+def completed_tasks(request: django.http.HttpRequest) -> django.http.HttpResponse:
+    tasks: list[Task] = Task.objects.filter(completed=True).order_by("-posted_at")
+    context: dict[str, list[Task]] = {"completed_tasks": tasks}
+    return render(request, "todo/completed.html", context)
