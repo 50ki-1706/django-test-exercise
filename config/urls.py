@@ -26,4 +26,5 @@ urlpatterns: list[any] = [
     path("<int:task_id>/update", todo_views.update, name="update"),
     path('<int:task_id>/delete', todo_views.delete, name='delete'),
     path('<int:task_id>/close', todo_views.close, name='close'),
+    path('completed/', todo_views.completed_tasks, name='completed_tasks'),
 ]

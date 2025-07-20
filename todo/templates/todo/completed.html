@@ -1,0 +1,15 @@
+{% extends 'todo/base.html' %} {% block title %}{{ task.title }} - To Do Application{% endblock %} {% block content %}
+<h1>完了したタスク一覧</h1>
+{% if completed_tasks %}
+<ul>
+  {% for task in completed_tasks %}
+  <li>
+    <strong>{{ task.title }}</strong>
+    - 完了日: {{ task.posted_at|date:"Y/m/d H:i" }} {% if task.due_at %} (期限: {{ task.due_at|date:"Y/m/d H:i" }})
+    {%endif%}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>完了したタスクはまだありません。🎉</p>
+{% endif %} {% endblock %}
