@@ -5,6 +5,7 @@
     <title>{% block title %}To Do Application{% endblock %}</title>
     <meta charset="UTF-8" />
     <meta name="author" content="INIAD" />
+    <link rel="stylesheet" href="{% static 'todo/style.css' %}" />
     {% block extra_head %}{% endblock %}
   </head>
   <body>
@@ -12,9 +13,9 @@
       <nav>
         <h1><a href="{% url 'index' %}">To Do Application</a></h1>
         <div class="navi" style="display: none">
-        <ul>
-          <li><a href="{% url 'index' %}">タスク一覧</a></li>
-        </ul>
+          <ul>
+            <li><a href="{% url 'index' %}">タスク一覧</a></li>
+          </ul>
         </div>
       </nav>
     </header>

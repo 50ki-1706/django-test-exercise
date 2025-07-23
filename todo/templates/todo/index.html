@@ -1,37 +1,60 @@
 {% extends 'todo/base.html' %} {% block title %}タスク一覧 - To Do Application{% endblock %} {% block content %}
 <form action="{% url 'index' %}" method="post">
   {% csrf_token %}
-  <div>
+
+  <div class="form-group">
     <label for="titleInput">Title</label>
-    <br />
-    <input id="titleInput" name="title" type="text" placeholder="Input title" />
+    <input id="titleInput" name="title" type="text" placeholder="タイトルを入力" class="textbox-1" />
   </div>
-  <div>
+
+  <div class="form-group">
     <label for="dueInput">Due at:</label>
-    <br />
-    <input id="dueInput" name="due_at" type="datetime-local" />
+    <div class="datetime-container">
+      <input id="dueInput" name="due_at" type="datetime-local" />
+    </div>
   </div>
-  <div>
-    <button type="submit">Submit</button>
+
+  <div class="form-group">
+    <button type="submit" class="button-1">保存</button>
   </div>
 </form>
-<br />
-<div>
-  <a href="{% url 'index' %}?order=due">Sort by Due Date</a>
+
+<div class="sort-links">
+  <a href="{% url 'index' %}?order=due" class="sort-link {% if current_order == 'due' %}active{% endif %}">
+    Sort by Due Date
+  </a>
   |
-  <a href="{% url 'index' %}?order=post">Sort by Posted Date</a>
-  |
-  <a href="{% url 'completed_tasks' %}">Completed</a>
+  <a href="{% url 'index' %}?order=post" class="sort-link {% if current_order == 'post' %}active{% endif %}">
+    Sort by Posted Date
+  </a>
 </div>
 
 {% for task in tasks %}
-<div class="text">
-  <h2><a href="{% url 'detail' task.id %}">{{ task.title }}</a></h2>
-  <ul>
-    <li>Posted at: {{ task.posted_at }}</li>
-    {% if task.due_at %}
-    <li>Due at: {{ task.due_at }}</li>
-    {% endif %}
-  </ul>
+<div class="task-item">
+  <div class="task-content">
+    <h2>
+      <a
+        href="{% url 'detail' task.id %}"
+        style="{% if task.completed %}text-decoration: line-through; color: #888;{% endif %}"
+      >
+        {{ task.title }}
+      </a>
+    </h2>
+    <ul>
+      <li>Posted at: {{ task.posted_at|date:"Y-m-d H:i" }}</li>
+      {% if task.due_at %}
+      <li>Due at: {{ task.due_at|date:"Y-m-d H:i" }}</li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="task-status">
+    <form action="{% url 'close' task.id %}" method="post" onchange="this.submit()">
+      {% csrf_token %}
+      <label class="checkbox-label">
+        <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} />
+        {% if task.completed %} 完了 {% else %} 未完了 {% endif %}
+      </label>
+    </form>
+  </div>
 </div>
 {% endfor %} {% endblock %}
