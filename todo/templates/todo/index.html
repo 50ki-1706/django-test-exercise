@@ -27,6 +27,8 @@
   <a href="{% url 'index' %}?order=post" class="sort-link {% if current_order == 'post' %}active{% endif %}">
     Sort by Posted Date
   </a>
+  |
+  <a href="{% url 'completed_tasks' %}" class="sort-link">Completed</a>
 </div>
 
 {% for task in tasks %}
